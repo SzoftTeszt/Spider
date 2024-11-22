@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BaseService } from '../base.service';
 
 @Component({
   selector: 'app-spiders',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class SpidersComponent {
 
+  spiders:any
+
+  constructor(private base:BaseService){
+    this.base.getSpiders().valueChanges().subscribe(
+      (res)=> this.spiders=res
+    )
+  }
+
+  pushSpider(){
+    this.base.pushSpider()
+  }
 }
